@@ -5,13 +5,18 @@ const token = localStorage.getItem('token')
 //      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
 //    },
 
+
+
+
+
+
 //Event Listener
 $('.dataEntry-form').on('submit', event => {
   event.preventDefault()
 
+  const userId = localStorage.getItem('userId')
   let brand= $('.brand').val()
   let model= $('.model').val()
-  const userId = localStorage.getItem('userId')
 
 $.ajax({
   method: 'POST',
@@ -24,8 +29,8 @@ $.ajax({
   dataType: 'json',
   success: response => {
     // localStorage.setItem('token', response.authToken)
-    // window.location = 'dashboard.html'
-    // console.log(brand, model);
+    window.location = 'review.html'
+    console.log(brand, model);
   },
   error: error => console.log(error)
 })
