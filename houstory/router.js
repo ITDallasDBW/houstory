@@ -23,7 +23,7 @@ router.get('/', jsonParser, (req, res) => {
   //from MyLibrary/library/router.js
   let userId = req.user.id;
   return Houstory.find({userId})
-  .then(posts => posts.map(post => post.serialize()));
+  .then(posts => res.json(posts.map(post => post.serialize())));
   // res.json(Houstory.get());
 });
 
