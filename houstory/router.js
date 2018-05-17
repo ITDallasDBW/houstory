@@ -11,10 +11,11 @@ router.use(jwtAuth);
 
 // Post new appliance data
 router.post('/', jsonParser, (req, res) => {
-  let {username, brand, model} = req.body;
+  let username = req.user.username;
+  let {brand, model} = req.body;
   // console.log(username, brand, model);
   // console.log(req.body);
-  const newDevice = Houstory.create(req.body);
+  const newDevice = Houstory.create({username, brand, model});
   res.status(201).json(newDevice);
 });
 
