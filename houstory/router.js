@@ -21,7 +21,7 @@ router.post('/', jsonParser, (req, res) => {
 // Get all data
 router.get('/', jsonParser, (req, res, next) => {
   //from MyLibrary/library/router.js
-  let userId = req.user.id;
+  let userId = req.user.username;
   return Houstory.find({userId})
   .then(posts => res.json(posts.map(post => post.serialize())))
   .catch(next);
