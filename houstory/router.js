@@ -11,8 +11,8 @@ router.use(jwtAuth);
 
 // Post new appliance data
 router.post('/', jsonParser, (req, res) => {
-  let {userId, brand, model} = req.body;
-  // console.log(userId, brand, model);
+  let {username, brand, model} = req.body;
+  // console.log(username, brand, model);
   // console.log(req.body);
   const newDevice = Houstory.create(req.body);
   res.status(201).json(newDevice);
@@ -21,8 +21,8 @@ router.post('/', jsonParser, (req, res) => {
 // Get all data
 router.get('/', jsonParser, (req, res, next) => {
   //from MyLibrary/library/router.js
-  let userId = req.user.username;
-  return Houstory.find({userId})
+  let username = req.user.username;
+  return Houstory.find({username})
   .then(posts => res.json(posts.map(post => post.serialize())))
   .catch(next);
   // res.json(Houstory.get());
