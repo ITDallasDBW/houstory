@@ -11,9 +11,9 @@ $.ajax({
   method: 'GET',
   url: '/api/houstory',
   // data: JSON.stringify({userId, brand, model}),
-  // headers: {
-  //      'Authorization': `Bearer ${token}`
-  //    },
+  headers: {
+       'Authorization': `Bearer ${token}`
+     },
   contentType: 'application/json',
   dataType: 'json',
   // success: response => {
