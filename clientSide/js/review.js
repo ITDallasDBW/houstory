@@ -3,17 +3,17 @@ const token = localStorage.getItem('token')
 
 
 
-  const userId = localStorage.getItem('userId')
+  const username = localStorage.getItem('username')
   let brand= $('.brand').val()
   let model= $('.model').val()
 
 $.ajax({
   method: 'GET',
   url: '/api/houstory',
-  // data: JSON.stringify({userId, brand, model}),
-  // headers: {
-  //      'Authorization': `Bearer ${token}`
-  //    },
+  // data: JSON.stringify({username, brand, model}),
+  headers: {
+       'Authorization': `Bearer ${token}`
+     },
   contentType: 'application/json',
   dataType: 'json',
   // success: response => {

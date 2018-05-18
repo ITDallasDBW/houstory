@@ -11,19 +11,21 @@ router.use(jwtAuth);
 
 // Post new appliance data
 router.post('/', jsonParser, (req, res) => {
-  let {userId, brand, model} = req.body;
-  // console.log(userId, brand, model);
+  let username = req.user.username;
+  let {brand, model} = req.body;
+  // console.log(username, brand, model);
   // console.log(req.body);
-  const newDevice = Houstory.create(req.body);
+  const newDevice = Houstory.create({username, brand, model});
   res.status(201).json(newDevice);
 });
 
 // Get all data
-router.get('/', jsonParser, (req, res) => {
+router.get('/', jsonParser, (req, res, next) => {
   //from MyLibrary/library/router.js
-  let userId = req.user.id;
-  return Houstory.find({userId})
-  .then(posts.map(post.serialize()));
+  let username = req.user.username;
+  return Houstory.find({username})
+  .then(posts => res.json(posts.map(post => post.serialize())))
+  .catch(next);
   // res.json(Houstory.get());
 });
 

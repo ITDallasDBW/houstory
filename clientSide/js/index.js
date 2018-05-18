@@ -36,7 +36,7 @@ $('.login-form').on('submit', event => {
     dataType: 'json',
     success: response => {
       localStorage.setItem('token', response.authToken)
-      localStorage.setItem('userId', response.userId)
+      localStorage.setItem('username', response.username)
       window.location = 'dashboard.html'
     },
     error: error => console.log(error)

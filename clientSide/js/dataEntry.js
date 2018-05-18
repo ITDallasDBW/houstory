@@ -14,14 +14,13 @@ const token = localStorage.getItem('token')
 $('.dataEntry-form').on('submit', event => {
   event.preventDefault()
 
-  const userId = localStorage.getItem('userId')
   let brand= $('.brand').val()
   let model= $('.model').val()
 
 $.ajax({
   method: 'POST',
   url: '/api/houstory',
-  data: JSON.stringify({userId, brand, model}),
+  data: JSON.stringify({brand, model}),
   headers: {
        'Authorization': `Bearer ${token}`
      },
